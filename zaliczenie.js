@@ -1,19 +1,59 @@
+//Dodanie kilku studentów
 function () {
-   wyniki = []
-   student = { "_id": ObjectId("5721ea0afe07eaece686a7d4"),
-  	           "nr_albumu": "123456",
-               "imie": "Zenon",
+wyniki =[]
+   student1 = { "_id": ObjectId("5721ea0afe07eaece686a7a1"),
+  	           "nr_albumu": "222222",
+               "imie": "Miroslaw",
                "nazwisko": "Kowalski",
                "oceny": {
                    "DMI": [
                      4,
                      5
+                   ],
+                   "IADB": [
+                     3,
+                     4,
+                     5
                    ]
                }
              }
-   db.studenci.insert(student);
-}
+   student2 = { "_id": ObjectId("5721ea0afe07eaece686a7a2"),
+  	           "nr_albumu": "333333",
+               "imie": "Jan",
+               "nazwisko": "Nowak",
+               "oceny": {
+                   "DMI": [
+                     4,
+                     5
+                   ],
+                   "IADB": [
+                     3,
+                     4,
+                     5
+                   ]
+               }
+             }
+student3 = { "_id": ObjectId("5721ea0afe07eaece686a7a3"),
+            "nr_albumu": "444444",
+            "imie": "Mieczyslaw",
+            "nazwisko": "Dzik",
+            "oceny": {
+                "DMI": [
+                  4,
+                  5
+                ],
+                "IADB": [
+                  3,
+                  4,
+                  5
+                ]
+              }
+            }
 
+wyniki.push(student1,student2,student3)
+db.studenci.insert(student1, student2, student3);
+   
+}
 
 
 //Zadanie a
@@ -30,17 +70,17 @@ function addStudent(nr_albumu, imie, nazwisko) {
                }
              }
 
-   db.studencii.insert(student);
+   db.studenci.insert(student);
 }
 //Wywołanie:
-addStudent(111111,"Michal","Gebka")
+addStudent(555555,"Michal","Gebka")
 
 //Zadanie b
 function removeStudent(index) {
    db.studenci.remove({ "nr_albumu" : index });
 }
 //Wywołanie
-removeStudent(111111)
+removeStudent(555555)
 
 
 //Zadanie c
@@ -49,7 +89,7 @@ function addNote(index, subject, note) {
    db.studenci.update({ "nr_albumu": index },{ $push : { [temp] : note }});
 }
 //Wywołanie
-addNote("123456", "DMI", 10)
+addNote("222222", "DMI", 6)
 
 //Zadanie d. Tutaj zakładam, że ostatnia ocena to ta "na samym dole" w ocenach
 function deleteLastAdded(index, subject) {
@@ -57,7 +97,7 @@ function deleteLastAdded(index, subject) {
    db.studenci.update({ "nr_albumu": index },{ $pop : { [temp] : 1 }});
 }
 //Wywołanie
-deleteLastAdded("11111", "DMI")
+deleteLastAdded("222222", "DMI")
 
 //Zadanie e
 function countMean(index, subject) {
@@ -72,7 +112,7 @@ function countMean(index, subject) {
 
 }
 //Wywołanie
-countMean("123456", "DMI")
+countMean("333333", "DMI")
 
 //Zadanie f
 function countMeanforAll(index, subject) {
@@ -95,13 +135,4 @@ function countMeanforAll(index, subject) {
 
 }
 //Wywolanie
-countMeanforAll("123456")
-
-
-
-
-
-
-
-
-
+countMeanforAll("444444")
